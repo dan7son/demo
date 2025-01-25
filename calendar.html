@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WasteTrack Pro - Calendar</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.3/main.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00795c;
+            --secondary: #004d3c;
+            --accent: #ffd100;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background-color: var(--primary);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .calendar-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .fc {
+            height: 800px;
+        }
+        
+        .fc-toolbar-title {
+            color: var(--primary);
+        }
+        
+        .fc-button-primary {
+            background-color: var(--primary) !important;
+            border-color: var(--primary) !important;
+        }
+        
+        .fc-button-primary:hover {
+            background-color: var(--secondary) !important;
+            border-color: var(--secondary) !important;
+        }
+        
+        .fc-event {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            .calendar-container {
+                padding: 1rem;
+            }
+            
+            .fc {
+                height: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="/" class="logo">WasteTrack Pro</a>
+    </header>
+    
+    <main class="content">
+        <div class="calendar-container">
+            <div id="calendar"></div>
+        </div>
+    </main>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.3/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: [
+                    {
+                        title: 'Route Planning',
+                        start: '2025-01-26',
+                        color: '#00795c'
+                    },
+                    {
+                        title: 'Fleet Maintenance',
+                        start: '2025-01-28',
+                        end: '2025-01-29',
+                        color: '#004d3c'
+                    }
+                ],
+                editable: true,
+                selectable: true
+            });
+            calendar.render();
+        });
+    </script>
+</body>
+</html>
